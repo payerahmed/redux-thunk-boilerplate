@@ -1,10 +1,16 @@
-import React, { Component } from "react"
-import InputDumb from "./InputDumb"
-import { connect } from "react-redux"
-import { InputAction } from "./InputAction"
+import React, { Component } from 'react'
+import InputDumb from './InputDumb'
+import { connect } from 'react-redux'
+import { InputAction } from './InputAction'
 
-function mapDispatchToProps(dispatch, ownProps) {
-  console.log("own props", ownProps)
+function mapStateToProps (state, ownProps) {
+  return {
+    link: state.ExpressState.link
+  }
+}
+
+function mapDispatchToProps (dispatch, ownProps) {
+  console.log('own props', ownProps)
   return {
     setInputString: inputData => {
       dispatch(InputAction(inputData))
@@ -13,10 +19,11 @@ function mapDispatchToProps(dispatch, ownProps) {
 }
 
 class DataSmart extends Component {
-  render() {
+  render () {
     return (
       <div>
         <InputDumb
+          link={this.props.link}
           handleClick={inputData => {
             this.props.setInputString(inputData)
           }}
@@ -26,7 +33,4 @@ class DataSmart extends Component {
   }
 }
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(DataSmart)
+export default connect(mapStateToProps, mapDispatchToProps)(DataSmart)

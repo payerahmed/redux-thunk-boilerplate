@@ -5,6 +5,8 @@
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
+    "cors": "^2.8.4",
+    "express": "^4.16.4",
     "react": "16.5.2",
     "react-dom": "16.5.2",
     "react-redux": "5.0.7",
